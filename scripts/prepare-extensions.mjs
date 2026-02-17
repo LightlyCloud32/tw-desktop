@@ -11,12 +11,11 @@ const build = await builder.build();
 console.log(`Built extensions (mode: ${mode})`);
 
 const outputDirectory = pathUtil.join(import.meta.dirname, '../dist-extensions/');
-/*
+
 fs.rmSync(outputDirectory, {
   recursive: true,
   force: true,
 });
-*/
 
 const brotliCompress = promisify(zlib.brotliCompress);
 
@@ -36,6 +35,19 @@ const exportFile = async (relativePath, file) => {
 
   console.log(`Compressed ${relativePath}`);
 };
+
+//#region 追加部分
+//多分ガバガバですが、気にしないで
+const externalExtensionDirectory = pathUtil.join(import.meta.dirname, '../extensions_external/');
+
+const externalExtensionExport = async (dir) => {
+  var exts = fs.readdirSync(dir);
+  exts.forEach((v) => {
+    var content = fs.readFileSync(pathUtil.join(dir, v));
+    exportFile(dir, v);
+  });
+}
+//#endregion
 
 const promises = Object.entries(build.files).map(([relativePath, file]) => exportFile(relativePath, file));
 Promise.all(promises)
