@@ -11,10 +11,12 @@ const build = await builder.build();
 console.log(`Built extensions (mode: ${mode})`);
 
 const outputDirectory = pathUtil.join(import.meta.dirname, '../dist-extensions/');
+/*
 fs.rmSync(outputDirectory, {
   recursive: true,
   force: true,
 });
+*/
 
 const brotliCompress = promisify(zlib.brotliCompress);
 
