@@ -1,5 +1,7 @@
+#※自分用に改造したTurboWarpです(多分)
+
 # TurboWarp Desktop
-a
+
 TurboWarp as a desktop app.
 
 If you're looking for downloads, head to: https://desktop.turbowarp.org/
