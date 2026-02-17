@@ -9,6 +9,7 @@
   },
   "type": "commonjs",
   "scripts": {
+    "prepare": "node scripts/prepare-extensions.mjs",
     "fetch": "node scripts/download-library-files.mjs && node scripts/download-packager.mjs && node scripts/prepare-extensions.mjs",
     "webpack:compile": "webpack",
     "webpack:watch": "webpack --watch",
